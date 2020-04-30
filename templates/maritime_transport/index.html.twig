@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MaritimeTransport index{% endblock %}
+
+{% block body %}
+    <h1>MaritimeTransport index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Engine</th>
+                <th>Seats</th>
+                <th>Weight</th>
+                <th>Size</th>
+                <th>FuelCost</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for maritime_transport in maritime_transports %}
+            <tr>
+                <td>{{ maritime_transport.id }}</td>
+                <td>{{ maritime_transport.engine }}</td>
+                <td>{{ maritime_transport.seats }}</td>
+                <td>{{ maritime_transport.weight }}</td>
+                <td>{{ maritime_transport.size }}</td>
+                <td>{{ maritime_transport.fuelCost }}</td>
+                <td>
+                    <a href="{{ path('maritime_transport_show', {'id': maritime_transport.id}) }}">show</a>
+                    <a href="{{ path('maritime_transport_edit', {'id': maritime_transport.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('maritime_transport_new') }}">Create new</a>
+{% endblock %}

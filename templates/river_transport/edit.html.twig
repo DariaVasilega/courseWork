@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit RiverTransport{% endblock %}
+
+{% block body %}
+    <h1>Edit RiverTransport</h1>
+
+    {{ include('river_transport/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('river_transport_index') }}">back to list</a>
+
+    {{ include('river_transport/_delete_form.html.twig') }}
+{% endblock %}

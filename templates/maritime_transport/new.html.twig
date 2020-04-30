@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New MaritimeTransport{% endblock %}
+
+{% block body %}
+    <h1>Create new MaritimeTransport</h1>
+
+    {{ include('maritime_transport/_form.html.twig') }}
+
+    <a href="{{ path('maritime_transport_index') }}">back to list</a>
+{% endblock %}

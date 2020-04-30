@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RiverTransport index{% endblock %}
+
+{% block body %}
+    <h1>RiverTransport index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Engine</th>
+                <th>Seats</th>
+                <th>Weight</th>
+                <th>Size</th>
+                <th>FuelCost</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for river_transport in river_transports %}
+            <tr>
+                <td>{{ river_transport.id }}</td>
+                <td>{{ river_transport.engine }}</td>
+                <td>{{ river_transport.seats }}</td>
+                <td>{{ river_transport.weight }}</td>
+                <td>{{ river_transport.size }}</td>
+                <td>{{ river_transport.fuelCost }}</td>
+                <td>
+                    <a href="{{ path('river_transport_show', {'id': river_transport.id}) }}">show</a>
+                    <a href="{{ path('river_transport_edit', {'id': river_transport.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('river_transport_new') }}">Create new</a>
+{% endblock %}

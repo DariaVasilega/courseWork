@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New RiverTransport{% endblock %}
+
+{% block body %}
+    <h1>Create new RiverTransport</h1>
+
+    {{ include('river_transport/_form.html.twig') }}
+
+    <a href="{{ path('river_transport_index') }}">back to list</a>
+{% endblock %}

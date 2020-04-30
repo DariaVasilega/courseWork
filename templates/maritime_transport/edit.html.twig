@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit MaritimeTransport{% endblock %}
+
+{% block body %}
+    <h1>Edit MaritimeTransport</h1>
+
+    {{ include('maritime_transport/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('maritime_transport_index') }}">back to list</a>
+
+    {{ include('maritime_transport/_delete_form.html.twig') }}
+{% endblock %}
