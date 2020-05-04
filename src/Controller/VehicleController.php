@@ -17,6 +17,8 @@ class VehicleController extends AbstractController
 {
     /**
      * @Route("/", name="vehicle_index", methods={"GET"})
+     * @param VehicleRepository $vehicleRepository
+     * @return Response
      */
     public function index(VehicleRepository $vehicleRepository): Response
     {
@@ -27,6 +29,8 @@ class VehicleController extends AbstractController
 
     /**
      * @Route("/new", name="vehicle_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -50,6 +54,8 @@ class VehicleController extends AbstractController
 
     /**
      * @Route("/{id}", name="vehicle_show", methods={"GET"})
+     * @param Vehicle $vehicle
+     * @return Response
      */
     public function show(Vehicle $vehicle): Response
     {
@@ -60,6 +66,9 @@ class VehicleController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="vehicle_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Vehicle $vehicle
+     * @return Response
      */
     public function edit(Request $request, Vehicle $vehicle): Response
     {
@@ -80,6 +89,9 @@ class VehicleController extends AbstractController
 
     /**
      * @Route("/{id}", name="vehicle_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Vehicle $vehicle
+     * @return Response
      */
     public function delete(Request $request, Vehicle $vehicle): Response
     {
