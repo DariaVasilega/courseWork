@@ -3,41 +3,46 @@
 {% block title %}RiverTransport index{% endblock %}
 
 {% block body %}
-    <h1>RiverTransport index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Engine</th>
-                <th>Seats</th>
-                <th>Weight</th>
-                <th>Size</th>
-                <th>FuelCost</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for river_transport in river_transports %}
-            <tr>
-                <td>{{ river_transport.id }}</td>
-                <td>{{ river_transport.engine }}</td>
-                <td>{{ river_transport.seats }}</td>
-                <td>{{ river_transport.weight }}</td>
-                <td>{{ river_transport.size }}</td>
-                <td>{{ river_transport.fuelCost }}</td>
-                <td>
-                    <a href="{{ path('river_transport_show', {'id': river_transport.id}) }}">show</a>
-                    <a href="{{ path('river_transport_edit', {'id': river_transport.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('river_transport_new') }}">Create new</a>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="display-2 text-center text-light">🔺️R I V E R🔻️</h1>
+            <div class="col-lg text-center">
+                <br>
+                <table class="table text-light">
+                    <thead>
+                    <tr>
+                        <th>Engine</th>
+                        <th>Seats</th>
+                        <th>Weight</th>
+                        <th>Size</th>
+                        <th>FuelCost</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for river_transport in river_transports %}
+                        <tr>
+                            <td>{{ river_transport.engine }}</td>
+                            <td>{{ river_transport.seats }}</td>
+                            <td>{{ river_transport.weight }}</td>
+                            <td>{{ river_transport.size }}</td>
+                            <td>{{ river_transport.fuelCost }}</td>
+                            <td>
+                                <a class="btn btn-primary" href="{{ path('river_transport_show', {'id': river_transport.id}) }}" role="button">show</a>
+                                <a class="btn btn-success" href="{{ path('river_transport_edit', {'id': river_transport.id}) }}" role="button">edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="7">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+    <a class="btn btn-primary" href="{{ path('river_transport_new') }}" role="button">Create new</a>
 {% endblock %}

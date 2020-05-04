@@ -3,41 +3,46 @@
 {% block title %}MaritimeTransport index{% endblock %}
 
 {% block body %}
-    <h1>MaritimeTransport index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Engine</th>
-                <th>Seats</th>
-                <th>Weight</th>
-                <th>Size</th>
-                <th>FuelCost</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for maritime_transport in maritime_transports %}
-            <tr>
-                <td>{{ maritime_transport.id }}</td>
-                <td>{{ maritime_transport.engine }}</td>
-                <td>{{ maritime_transport.seats }}</td>
-                <td>{{ maritime_transport.weight }}</td>
-                <td>{{ maritime_transport.size }}</td>
-                <td>{{ maritime_transport.fuelCost }}</td>
-                <td>
-                    <a href="{{ path('maritime_transport_show', {'id': maritime_transport.id}) }}">show</a>
-                    <a href="{{ path('maritime_transport_edit', {'id': maritime_transport.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('maritime_transport_new') }}">Create new</a>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="display-2 text-center text-light">🔺️M A R I T I M E🔻️</h1>
+            <div class="col-lg text-center">
+                <br>
+                <table class="table text-light">
+                    <thead>
+                    <tr>
+                        <th>Engine</th>
+                        <th>Seats</th>
+                        <th>Weight</th>
+                        <th>Size</th>
+                        <th>FuelCost</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for maritime_transport in maritime_transports %}
+                        <tr>
+                            <td>{{ maritime_transport.engine }}</td>
+                            <td>{{ maritime_transport.seats }}</td>
+                            <td>{{ maritime_transport.weight }}</td>
+                            <td>{{ maritime_transport.size }}</td>
+                            <td>{{ maritime_transport.fuelCost }}</td>
+                            <td>
+                                <a class="btn btn-primary" href="{{ path('maritime_transport_show', {'id': maritime_transport.id}) }}" role="button">show</a>
+                                <a class="btn btn-success" href="{{ path('maritime_transport_edit', {'id': maritime_transport.id}) }}" role="button">edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="7">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+    <a class="btn btn-primary" href="{{ path('maritime_transport_new') }}" role="button">Create new</a>
 {% endblock %}

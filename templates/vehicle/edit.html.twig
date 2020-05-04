@@ -3,11 +3,29 @@
 {% block title %}Edit Vehicle{% endblock %}
 
 {% block body %}
-    <h1>Edit Vehicle</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <br>
+            <div class="card bg-light" style="opacity: 0.9">
+                <div class="card-body text-center">
+                    <div class="form-row">
+                        <div class="form-group text-center col-lg-12 ">
+    <h1 class="text-light">Edit Vehicle</h1>
 
     {{ include('vehicle/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('vehicle_index') }}">back to list</a>
+{#    <a class="btn btn-primary" href="{{ path('vehicle_index') }}" role="button">back to list</a>#}
 
     {{ include('vehicle/_delete_form.html.twig') }}
+                            <td>
+                                <a class="btn btn-lg btn-outline-dark text-decoration-none" href="{{ path('vehicle_index') }}" role="button">Back to list</a>
+                            </td>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
