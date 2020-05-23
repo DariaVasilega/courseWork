@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}WaterTransport{% endblock %}
+
+{% block body %}
+    <h1>WaterTransport</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ water_transport.id }}</td>
+            </tr>
+            <tr>
+                <th>Model</th>
+                <td>{{ water_transport.model }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ water_transport.type }}</td>
+            </tr>
+            <tr>
+                <th>SeatsQty</th>
+                <td>{{ water_transport.seatsQty }}</td>
+            </tr>
+            <tr>
+                <th>Size</th>
+                <td>{{ water_transport.size }}</td>
+            </tr>
+            <tr>
+                <th>Weight</th>
+                <td>{{ water_transport.weight }}</td>
+            </tr>
+            <tr>
+                <th>CarryingCapacity</th>
+                <td>{{ water_transport.carryingCapacity }}</td>
+            </tr>
+            <tr>
+                <th>Lifeboard</th>
+                <td>{{ water_transport.lifeboard }}</td>
+            </tr>
+            <tr>
+                <th>MastQty</th>
+                <td>{{ water_transport.mastQty }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('water_transport_index') }}">back to list</a>
+
+    <a href="{{ path('water_transport_edit', {'id': water_transport.id}) }}">edit</a>
+
+    {{ include('water_transport/_delete_form.html.twig') }}
+{% endblock %}
