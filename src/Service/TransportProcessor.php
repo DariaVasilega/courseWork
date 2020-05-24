@@ -8,29 +8,63 @@ use App\Service\ProcessorInterface;
 
 class TransportProcessor implements ProcessorInterface
 {
-
-    public function getMaxSpeed(): int
+    /**
+     * @inheritDoc
+     * @param int $distance
+     * @param int $time
+     * @return int
+     */
+    public function getMaxSpeed(int $distance, int $time): int
     {
-        // TODO: Implement getMaxSpeed() method.
+        return $distance / $time;
     }
 
-    public function calculateConsumptionFuel(): int
+    /**
+     * @inheritDoc
+     * @param int $weight
+     * @param int $speed
+     * @param int $distance
+     * @return int
+     */
+    public function calculateConsumptionFuel(int $weight, int $speed, int $distance): int
     {
-        // TODO: Implement calculateConsumptionFuel() method.
+       return ((($distance/ $speed) * 100) - $weight) / -100;
     }
 
-    public function calculateConsumptionOil(): int
+    /**
+     * @inheritDoc
+     * @param int $weight
+     * @param int $speed
+     * @param int $distance
+     * @return int
+     */
+    public function calculateConsumptionOil(int $weight, int $speed, int $distance): int
     {
-        // TODO: Implement calculateConsumptionOil() method.
+        return ((($distance/ $speed) * 100) - $weight) / -10;
     }
 
-    public function calculateDistance(): int
+    /**
+     * @inheritDoc
+     * @param int $externalWeight
+     * @param int $fuelQty
+     * @param int $fuelConsumptionPerHundredKilometers
+     * @return int
+     */
+    public function calculateDistance(int $externalWeight, int $fuelQty, int $fuelConsumptionPerHundredKilometers): int
     {
-        // TODO: Implement calculateDistance() method.
+       $expectedDistance = ($fuelQty/ $fuelConsumptionPerHundredKilometers) * 100 ;
+       $differenceInDistance = $externalWeight / 10;
+
+       return $expectedDistance - $differenceInDistance;
     }
 
-    public function calculateOperatingCosts(): int
+    /**
+     * @inheritDoc
+     * @param array $params
+     * @return int
+     */
+    public function calculateOperatingCosts(array $params): int
     {
-        // TODO: Implement calculateOperatingCosts() method.
+        return 1;
     }
 }
