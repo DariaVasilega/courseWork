@@ -9,20 +9,26 @@ use App\Service\TransportProcessor;
 
 class WaterTransportProcessor extends TransportProcessor
 {
-    public function getMaxSpeed(int $externalWeight, int $enginePower): int
+    /**
+     * @param array $params
+     * @return float|int
+     */
+    public function calculateMaxSpeed(array $params)
     {
-        return ($enginePower / $externalWeight) * 1000;
+        [$enginePower, $externalWeight] = $params;
+
+        return ((int)$enginePower / (int)$externalWeight) * 1000;
     }
 
     /**
      * @inheritDoc
      * @param array $params
-     * @return int
+     * @return int|float
      */
-    public function calculateOperatingCosts(array $params): int
+    public function calculateOperatingCosts(array $params)
     {
         [$fuel, $oil, $timeLine] = $params;
 
-        return ($fuel + $oil) * $timeLine;
+        return ((int)$fuel + (int)$oil) * (int)$timeLine;
     }
 }

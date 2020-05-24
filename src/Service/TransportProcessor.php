@@ -9,14 +9,14 @@ use App\Service\ProcessorInterface;
 class TransportProcessor implements ProcessorInterface
 {
     /**
-     * @inheritDoc
-     * @param int $distance
-     * @param int $time
-     * @return int
+     * @param array $params
+     * @return int|float
      */
-    public function getMaxSpeed(int $distance, int $time): int
+    public function calculateMaxSpeed(array $params)
     {
-        return $distance / $time;
+        [$distance, $time] = $params;
+
+        return (int)$distance / (int)$time;
     }
 
     /**
@@ -24,11 +24,13 @@ class TransportProcessor implements ProcessorInterface
      * @param int $weight
      * @param int $speed
      * @param int $distance
-     * @return int
+     * @return int|float
      */
-    public function calculateConsumptionFuel(int $weight, int $speed, int $distance): int
+    public function calculateConsumptionFuel(array $params)
     {
-       return ((($distance/ $speed) * 100) - $weight) / -100;
+        [$weight, $speed, $distance] = $params;
+
+       return ((((int)$distance / (int)$speed) * 100) - (int)$weight) / -100;
     }
 
     /**
@@ -36,11 +38,13 @@ class TransportProcessor implements ProcessorInterface
      * @param int $weight
      * @param int $speed
      * @param int $distance
-     * @return int
+     * @return int|float
      */
-    public function calculateConsumptionOil(int $weight, int $speed, int $distance): int
+    public function calculateConsumptionOil(array $params)
     {
-        return ((($distance/ $speed) * 100) - $weight) / -10;
+        [$weight, $speed, $distance] = $params;
+
+        return ((((int)$distance / (int)$speed) * 100) - (int)$weight) / -10;
     }
 
     /**
@@ -48,12 +52,13 @@ class TransportProcessor implements ProcessorInterface
      * @param int $externalWeight
      * @param int $fuelQty
      * @param int $fuelConsumptionPerHundredKilometers
-     * @return int
+     * @return int|float
      */
-    public function calculateDistance(int $externalWeight, int $fuelQty, int $fuelConsumptionPerHundredKilometers): int
+    public function calculateDistance(array $params)
     {
-       $expectedDistance = ($fuelQty/ $fuelConsumptionPerHundredKilometers) * 100 ;
-       $differenceInDistance = $externalWeight / 10;
+       [$externalWeight, $fuelQty, $fuelConsumptionPerHundredKilometers] = $params;
+       $expectedDistance = ((int)$fuelQty / (int)$fuelConsumptionPerHundredKilometers) * 100 ;
+       $differenceInDistance = (int)$externalWeight / 10;
 
        return $expectedDistance - $differenceInDistance;
     }
@@ -61,9 +66,9 @@ class TransportProcessor implements ProcessorInterface
     /**
      * @inheritDoc
      * @param array $params
-     * @return int
+     * @return int|float
      */
-    public function calculateOperatingCosts(array $params): int
+    public function calculateOperatingCosts(array $params)
     {
         return 1;
     }

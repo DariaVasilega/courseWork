@@ -1,0 +1,84 @@
+{% block body %}
+    <div class="forms-wrapper w-100">
+        <div class="max-speed">
+            <form id="calculateMaxSpeed"
+                  class="custom-form-item"
+                  onsubmit="processForm(this)"
+                  action="javascript:void(0)"
+            >
+                <legend>Calculate Max Speed</legend>
+                <input type="hidden" name="calc_method" value="calculateMaxSpeed"/>
+                <input type="number" name="result[distance]" placeholder="input distance in kilometers"/>
+                <input type="number" name="result[time]" placeholder="input time in hours"/>
+                <div class="result"><span>result: </span><span class="result-value"></span></div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="oil">
+            <form id="calculateConsumptionOil"
+                  onsubmit="processForm(this)"
+                  class="custom-form-item"
+                  action="javascript:void(0)"
+            >
+                <legend>Calculate Consumption Oil</legend>
+                <input type="hidden" name="calc_method" value="calculateConsumptionOil"/>
+                <input type="number" name="result[weight]" placeholder="input weight in kilograms"/>
+                <input type="number" name="result[speed]" placeholder="input speed in km per hours"/>
+                <input type="number" name="result[distance]" placeholder="input distance in kilometers"/>
+                <div class="result"><span>result: </span><span class="result-value"></span></div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="fuel">
+            <form id="calculateConsumptionFuel"
+                  onsubmit="processForm(this)"
+                  class="custom-form-item"
+                  action="javascript:void(0)"
+            >
+                <legend>Calculate Consumption Fuel</legend>
+                <input type="hidden" name="calc_method" value="calculateConsumptionFuel"/>
+                <input type="number" name="result[weight]" placeholder="input weight in kilograms"/>
+                <input type="number" name="result[speed]" placeholder="input speed in km per hours"/>
+                <input type="number" name="result[distance]" placeholder="input distance in kilometers"/>
+                <div class="result"><span>result: </span><span class="result-value"></span></div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="distance">
+            <form id="calculateDistance"
+                  onsubmit="processForm(this)"
+                  class="custom-form-item"
+                  action="javascript:void(0)"
+            >
+                <legend>Calculate Distance</legend>
+                <input type="hidden" name="calc_method" value="calculateDistance"/>
+                <input type="number" name="result[externalWeight]" placeholder="input weight in kilograms"/>
+                <input type="number" name="result[fuelQty]" placeholder="input fuel liters qty"/>
+                <input type="number"
+                       name="result[fuelConsumptionPerHundredKilometers]"
+                       placeholder="input fuel consumption per hundred kilometers "
+                />
+                <div class="result"><span>result: </span><span class="result-value"></span></div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="operating-costs">
+            <form id="calculateOperatingCosts"
+                  onsubmit="processForm(this)"
+                  class="custom-form-item"
+                  action="javascript:void(0)"
+            >
+                <legend>Calculate Operating Costs</legend>
+                <input type="hidden" name="calc_method" value="calculateOperatingCosts"/>
+                <input type="number" name="result[fuel]" placeholder="input fuel in liters"/>
+                <input type="number" name="result[oil]" placeholder="input oil in liters"/>
+                <input type="number" name="result[time_line]" placeholder="input time in hours"/>
+                <div class="result"><span>result: </span><span class="result-value"></span></div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="{{ asset('assets/js/form-processor.js') }}"></script>
+{% endblock %}

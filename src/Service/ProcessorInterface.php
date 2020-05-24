@@ -7,33 +7,27 @@ namespace App\Service;
 interface ProcessorInterface
 {
     /**
-     * @param int $weight
-     * @param int $speed
-     * @param int $distance
-     * @return int
+     * @param array $params
+     * @return int|float
      */
-    public function calculateConsumptionFuel(int $weight, int $speed, int $distance): int;
-
-    /**
-     * @param int $weight
-     * @param int $speed
-     * @param int $distance
-     * @return int
-     */
-    public function calculateConsumptionOil(int $weight, int $speed, int $distance): int;
-
-    /**
-     * @param int $externalWeight
-     * @param int $fuelQty
-     * @param int $fuelConsumptionPerHundredKilometers
-     * @return int
-     */
-    public function calculateDistance(int $externalWeight, int $fuelQty, int $fuelConsumptionPerHundredKilometers): int;
+    public function calculateConsumptionFuel(array $params);
 
     /**
      * @param array $params
-     * @return int
+     * @return int|float
      */
-    public function calculateOperatingCosts(array $params): int;
+    public function calculateConsumptionOil(array $params);
+
+    /**
+     * @param array $params
+     * @return int|float
+     */
+    public function calculateDistance(array $params);
+
+    /**
+     * @param array $params
+     * @return int|float
+     */
+    public function calculateOperatingCosts(array $params);
 
 }

@@ -3,47 +3,58 @@
 {% block title %}WaterTransport index{% endblock %}
 
 {% block body %}
-    <h1>WaterTransport index</h1>
+    <div class="d-flex flex-column justify-content-between p-5">
+        <div>
+            <h1>WaterTransport index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Model</th>
-                <th>Type</th>
-                <th>SeatsQty</th>
-                <th>Size</th>
-                <th>Weight</th>
-                <th>CarryingCapacity</th>
-                <th>Lifeboard</th>
-                <th>MastQty</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for water_transport in water_transports %}
-            <tr>
-                <td>{{ water_transport.id }}</td>
-                <td>{{ water_transport.model }}</td>
-                <td>{{ water_transport.type }}</td>
-                <td>{{ water_transport.seatsQty }}</td>
-                <td>{{ water_transport.size }}</td>
-                <td>{{ water_transport.weight }}</td>
-                <td>{{ water_transport.carryingCapacity }}</td>
-                <td>{{ water_transport.lifeboard }}</td>
-                <td>{{ water_transport.mastQty }}</td>
-                <td>
-                    <a href="{{ path('water_transport_show', {'id': water_transport.id}) }}">show</a>
-                    <a href="{{ path('water_transport_edit', {'id': water_transport.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="10">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            <table class="table m-3">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Model</th>
+                    <th>Type</th>
+                    <th>SeatsQty</th>
+                    <th>Size</th>
+                    <th>Weight</th>
+                    <th>CarryingCapacity</th>
+                    <th>Lifeboard</th>
+                    <th>MastQty</th>
+                    <th>Current process</th>
+                    <th>actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for water_transport in water_transports %}
+                    <tr>
+                        <td>{{ water_transport.id }}</td>
+                        <td>{{ water_transport.model }}</td>
+                        <td>{{ water_transport.type }}</td>
+                        <td>{{ water_transport.seatsQty }}</td>
+                        <td>{{ water_transport.size }}</td>
+                        <td>{{ water_transport.weight }}</td>
+                        <td>{{ water_transport.carryingCapacity }}</td>
+                        <td>{{ water_transport.lifeboard }}</td>
+                        <td>{{ water_transport.mastQty }}</td>
+                        <td><input type="radio" name="current_process"></td>
+                        <td>
+                            <a href="{{ path('water_transport_show', {'id': water_transport.id}) }}">show</a>
+                            <a href="{{ path('water_transport_edit', {'id': water_transport.id}) }}">edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="10">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <div class="text-right">
+                <a href="{{ path('water_transport_new') }}">Create new</a>
+            </div>
+        </div>
 
-    <a href="{{ path('water_transport_new') }}">Create new</a>
+        <div class="vertical-item">
+            {% include 'calculate.html.twig' %}
+        </div>
+    </div>
 {% endblock %}
